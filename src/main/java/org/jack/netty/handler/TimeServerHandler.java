@@ -6,7 +6,7 @@ import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 
-public class TimeClientHandler extends ChannelInboundHandlerAdapter {
+public class TimeServerHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelActive(final ChannelHandlerContext ctx) { 
@@ -14,13 +14,10 @@ public class TimeClientHandler extends ChannelInboundHandlerAdapter {
         time.writeInt((int) (System.currentTimeMillis() / 1000L + 2208988800L));
 
         final ChannelFuture f = ctx.writeAndFlush(time); 
-        f.addListener(new ChannelFutureListener() {
-            @Override
-            public void operationComplete(ChannelFuture future) {
-                assert f == future;
-                ctx.close();
-            }
-        }); 
+        f.addListener((ChannelFutureListener) future -> {
+            assert f == future;
+            ctx.close();
+        });
     }
 
     @Override
