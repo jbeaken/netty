@@ -8,6 +8,7 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import org.jack.netty.handler.TimeClientHandler;
 import org.jack.netty.handler.TimeServerHandler;
 
 public class TimeClient {
@@ -26,7 +27,7 @@ public class TimeClient {
             b.handler(new ChannelInitializer<SocketChannel>() {
                 @Override
                 public void initChannel(SocketChannel ch) throws Exception {
-                    ch.pipeline().addLast(new TimeServerHandler());
+                    ch.pipeline().addLast(new TimeClientHandler());
                 }
             });
 
