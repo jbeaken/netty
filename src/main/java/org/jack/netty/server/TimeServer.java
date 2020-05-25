@@ -8,12 +8,14 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import lombok.extern.slf4j.Slf4j;
 import org.jack.netty.handler.DiscardServerHandler;
 import org.jack.netty.handler.TimeServerHandler;
 
 /**
  * Discards any incoming data.
  */
+@Slf4j
 public class TimeServer {
 
     private int port;
@@ -23,8 +25,11 @@ public class TimeServer {
     }
 
     public void run() throws Exception {
+        log.info("Starting time server");
+
         EventLoopGroup bossGroup = new NioEventLoopGroup(); 
         EventLoopGroup workerGroup = new NioEventLoopGroup();
+        
         try {
             ServerBootstrap b = new ServerBootstrap(); 
             b.group(bossGroup, workerGroup)
