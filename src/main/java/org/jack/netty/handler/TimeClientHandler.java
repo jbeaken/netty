@@ -10,8 +10,9 @@ public class TimeClientHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
-        UnixTime m = (UnixTime) msg;
-        System.out.println(m);
+        UnixTime unixTime = (UnixTime) msg;
+
+        log.info("System time : {}", unixTime);
         ctx.close();
     }
 
