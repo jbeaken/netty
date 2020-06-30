@@ -8,16 +8,16 @@ import io.netty.util.ReferenceCountUtil;
 /**
  * Handles a server-side channel.
  */
-public class DiscardServerHandler extends ChannelInboundHandlerAdapter { // (1)
+public class DiscardServerHandler extends ChannelInboundHandlerAdapter { 
 
     @Override
-    public void channelRead(ChannelHandlerContext ctx, Object msg) { // (2)
-        ctx.write(msg); // (1)
-        ctx.flush(); // (2)
+    public void channelRead(ChannelHandlerContext ctx, Object msg) { 
+        ctx.write(msg); 
+        ctx.flush(); 
     }
 
     @Override
-    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) { // (4)
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) { 
         // Close the connection when an exception is raised.
         cause.printStackTrace();
         ctx.close();
