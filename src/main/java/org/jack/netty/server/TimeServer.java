@@ -10,6 +10,7 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import lombok.extern.slf4j.Slf4j;
 import org.jack.netty.handler.DiscardServerHandler;
+import org.jack.netty.handler.TimeEncoder;
 import org.jack.netty.handler.TimeServerHandler;
 
 /**
@@ -37,7 +38,7 @@ public class TimeServer {
                     .childHandler(new ChannelInitializer<SocketChannel>() { 
                         @Override
                         public void initChannel(SocketChannel ch) throws Exception {
-                            ch.pipeline().addLast(new TimeServerHandler());
+                            ch.pipeline().addLast(new TimeEncoder(), new TimeServerHandler());
                         }
                     })
                     .option(ChannelOption.SO_BACKLOG, 128)          
