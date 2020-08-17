@@ -8,10 +8,9 @@ Use maven
 
 ## Usage
 
-Redis module
-SOCKS5 module
-...and a simple echo, discard and time server to play around with
-```
+#Redis module
+#SOCKS5 module
+#...and a simple echo, discard and time server to play around with
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
