@@ -3,6 +3,7 @@ package org.jack.netty.handler;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ByteToMessageDecoder;
+import org.jack.netty.pojo.UnixTime;
 
 import java.util.List;
 
@@ -10,9 +11,9 @@ public class TimeDecoder extends ByteToMessageDecoder { // (1)
     @Override
     protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) { // (2)
         if (in.readableBytes() < 4) {
-            return; // (3)
+            return;
         }
 
-        out.add(in.readBytes(4)); // (4)
+        out.add(new UnixTime(in.readUnsignedInt()));
     }
 }
