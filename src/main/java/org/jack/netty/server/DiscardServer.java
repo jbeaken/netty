@@ -9,7 +9,7 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-import org.jack.netty.DiscardServerHandler;
+import org.jack.netty.handler.DiscardServerHandler;
 
 /**
  * Discards any incoming data.
