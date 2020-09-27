@@ -7,7 +7,7 @@ import org.jack.netty.pojo.UnixTime;
 
 public class TimeEncoder extends MessageToByteEncoder<UnixTime> {
     @Override
-    protected void encode(ChannelHandlerContext ctx, UnixTime msg, ByteBuf out) {
-        out.writeInt((int)msg.value());
+    protected void encode(ChannelHandlerContext ctx, UnixTime unixTime, ByteBuf out) {
+        out.writeInt((int)unixTime.value());
     }
 }
